@@ -17,12 +17,12 @@ TMPFILE2=$(mktemp /tmp/ctan.XXXXXX)
 ####################
 # Mirror
 ####################
-rsync -ai --filter 'protect .stfolder' --log-file=$TMPFILE1 --delete rsync://rsync.dante.ctan.org/CTAN "$desination_path"
+rsync -ai --filter 'protect .stfolder' --log-file=$TMPFILE1 --delete rsync://rsync.dante.ctan.org/CTAN "$destination_path"
 
 ####################
 # Deploy
 ####################
-"$SCRIPT_DIR/tools/deploy.sh" "$desination_path"
+"$SCRIPT_DIR/tools/deploy.sh" "$destination_path"
 
 ####################
 # CDN Purge
