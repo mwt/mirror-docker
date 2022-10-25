@@ -7,8 +7,8 @@ do
     rsync -avxHAX --delete "/srv/www/"    "${SERVER}:/srv/www"
     rsync -avxHAX --delete "/etc/nginx/"  "${SERVER}:/etc/nginx"
 
-    # sync git folder (which contains fancyindex theme)
-    rsync -avxHAX --delete "/home/mirror/git/" "${SERVER}:/home/mirror/git"
+    # sync mirror folder (which contains fancyindex theme)
+    rsync -avxHAX --delete "/home/mirror/" "${SERVER}:/home/mirror"
 
     # sync gemini
     rsync -avxHAX --delete "/srv/gemini/" "${SERVER}:/srv/gemini"
