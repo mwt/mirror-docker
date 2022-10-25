@@ -6,6 +6,7 @@ for SERVER in "${SERVERS[@]}"
 do
     rsync -avxHAX --delete "/srv/www/"    "${SERVER}:/srv/www"
     rsync -avxHAX --delete "/etc/nginx/"  "${SERVER}:/etc/nginx"
+    rsync -avxHAX --delete "/etc/letsencrypt/"  "${SERVER}:/etc/letsencrypt"
 
     # sync mirror folder (which contains fancyindex theme)
     rsync -avxHAX --delete "/home/mirror/" "${SERVER}:/home/mirror"
