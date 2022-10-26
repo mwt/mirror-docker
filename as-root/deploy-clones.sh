@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-SERVERS=("mirror-lu-p")
+SERVERS=("mirror-lu-p mirror-lu-s")
 
 for SERVER in "${SERVERS[@]}"
 do
@@ -17,7 +17,7 @@ do
     rsync -avxHAX --delete "/etc/stargazer.ini" "${SERVER}:/etc/stargazer.ini"
     rsync -avxHAX --delete "/etc/systemd/system/stargazer.service" "${SERVER}:/etc/systemd/system/stargazer.service"
 
-    rsync -avxHAX --delete "/mnt/mirror/" "${SERVER}:/mnt/mirror"
+    #rsync -avxHAX --delete "/mnt/mirror/" "${SERVER}:/mnt/mirror"
 
     if [[ "$1" == "-r" ]] {
         ssh "${SERVER}" 'nginx -t -q && systemctl reload nginx'
