@@ -5,4 +5,4 @@ set -e
 SCRIPT_DIR="$(dirname "$0")"
 desination_path="/mnt/mirror/matthewthomas/site"
 
-"$SCRIPT_DIR/tools/deploy.sh" "$desination_path"
+"$SCRIPT_DIR/tools/deploy.sh" "$desination_path" >> "$HOME/logs/matthewthomas-post.log"
