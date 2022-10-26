@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-SERVERS=("mirror-lu-p mirror-lu-s")
+SERVERS=("mirror-lu-p" "mirror-lu-s")
 
 for SERVER in "${SERVERS[@]}"
 do
