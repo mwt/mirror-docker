@@ -1,0 +1,17 @@
+Host second
+        HostName 192.168.1.2
+        User mirror
+        Port 22
+        IdentityFile ~/.ssh/id_ed25519
+
+Host mirror-lu-p
+        HostName mirror-lu-p.mwt.me
+        User mirror
+        Port 22
+        IdentityFile ~/.ssh/id_ed25519
+
+Host mirror-lu-s
+        HostName mirror-lu-s.mwt.me
+        User mirror
+        Port 22
+        IdentityFile ~/.ssh/id_ed25519
