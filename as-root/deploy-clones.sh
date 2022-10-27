@@ -4,6 +4,7 @@ SERVERS=("second" "mirror-lu-p" "mirror-lu-s")
 
 for SERVER in "${SERVERS[@]}"
 do
+    ssh -Nf "${SERVER}"
     rsync -avxHAX --delete "/srv/www/"    "${SERVER}:/srv/www"
     rsync -avxHAX --delete "/etc/nginx/"  "${SERVER}:/etc/nginx"
     rsync -avxHAX --delete "/etc/letsencrypt/"  "${SERVER}:/etc/letsencrypt"
@@ -17,11 +18,10 @@ do
     rsync -avxHAX --delete "/etc/stargazer.ini" "${SERVER}:/etc/stargazer.ini"
     rsync -avxHAX --delete "/etc/systemd/system/stargazer.service" "${SERVER}:/etc/systemd/system/stargazer.service"
 
-    #rsync -avxHAX --delete "/mnt/mirror/" "${SERVER}:/mnt/mirror"
+    rsync -avxHAX --delete "/mnt/mirror/" "${SERVER}:/mnt/mirror"
 
-    if [[ "$1" == "-r" ]] {
-        ssh "${SERVER}" 'nginx -t -q && systemctl reload nginx'
-        ssh "${SERVER}" 'stargazer --check-config && systemctl restart stargazer'
-    }
+    ssh "${SERVER}" 'nginx -t -q && systemctl reload nginx'
+    ssh "${SERVER}" 'stargazer --check-config && systemctl restart stargazer'
+    ssh -O exit "${SERVER}"
 
 done
