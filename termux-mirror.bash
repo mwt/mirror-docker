@@ -17,8 +17,7 @@ TMPFILE2=$(mktemp /tmp/ctan.XXXXXX)
 ####################
 # Mirror
 ####################
-RSYNC_PASSWORD=termuxmirror 
-rsync -ai --delete --exclude termux-main-21 --log-file=$TMPFILE1 rsync@grimler.se::termux "$destination_path"
+RSYNC_PASSWORD=termuxmirror rsync -ai --delete --exclude termux-main-21 --log-file=$TMPFILE1 rsync@grimler.se::termux "$destination_path"
 
 ####################
 # Deploy
