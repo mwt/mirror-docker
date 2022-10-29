@@ -1,0 +1,26 @@
+############# config ##################
+#
+set base_path    /mnt/mirror/apt-mirror
+#
+set mirror_path  $base_path/mirror
+set skel_path    $base_path/skel
+set var_path     $base_path/var
+# set cleanscript $var_path/clean.sh
+# set defaultarch  <running host architecture>
+# set postmirror_script $var_path/postmirror.sh
+set run_postmirror 0
+set nthreads     20
+set _tilde 0
+#
+############# end config ##############
+
+# GitHub Desktop Linux
+deb-all https://packagecloud.io/shiftkey/desktop/any/ any main
+deb-amd64 https://packagecloud.io/shiftkey/desktop/any/ any main
+clean https://packagecloud.io/shiftkey/desktop/
+
+# Zotero
+deb-all https://zotero.retorque.re/file/apt-package-archive ./
+deb-amd64 https://zotero.retorque.re/file/apt-package-archive ./
+deb-i386 https://zotero.retorque.re/file/apt-package-archive ./
+clean https://zotero.retorque.re/file/apt-package-archive
