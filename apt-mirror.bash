@@ -18,6 +18,7 @@ TMPFILE=$(mktemp /tmp/apt-mirror.XXXXXX)
 # Mirror
 ####################
 apt-mirror
+wget -qNP "$mirror_path/zotero.retorque.re/file/apt-package-archive" "https://zotero.retorque.re/file/apt-package-archive/InRelease"
 
 ####################
 # Deploy
@@ -30,7 +31,7 @@ apt-mirror
 
 find "$mirror_path" -type f -path '*dist*' -mmin -360 -print | sed \
  -e "s|^${mirror_path}/packagecloud.io/shiftkey/desktop/any|ghd/deb|" \
- -e "s|^${mirror_path}/apt.retorque.re/file/zotero-apt|zotero/deb|" | 
+ -e "s|^${mirror_path}/zotero.retorque.re/file/apt-package-archive|zotero/deb|" | 
 while mapfile -t -n 30 ary && ((${#ary[@]}))
 do
     printf '%s\n' "${ary[@]}" | jq -R . | jq -s "{ \"files\" : map(\"https://${MIRROR_URL}/\" + .) }" | tee "$TMPFILE"
