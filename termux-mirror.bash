@@ -11,8 +11,8 @@ destination_path="/mnt/mirror/termux"
 
 # Create a tempfile
 #
-TMPFILE1=$(mktemp /tmp/ctan.XXXXXX)
-TMPFILE2=$(mktemp /tmp/ctan.XXXXXX)
+TMPFILE1=$(mktemp /tmp/termux-mirror.XXXXXX)
+TMPFILE2=$(mktemp /tmp/termux-mirror.XXXXXX)
 
 ####################
 # Mirror
