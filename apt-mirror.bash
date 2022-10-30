@@ -17,7 +17,11 @@ TMPFILE=$(mktemp /tmp/apt-mirror.XXXXXX)
 ####################
 # Mirror
 ####################
+# clean before we mirror (clean deletes InRelease)
+"$desination_path/var/clean.sh"
+# mirror
 apt-mirror
+# download missing InRelease file
 wget -qNP "$mirror_path/zotero.retorque.re/file/apt-package-archive" "https://zotero.retorque.re/file/apt-package-archive/InRelease"
 
 ####################
