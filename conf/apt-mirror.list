@@ -15,9 +15,9 @@ set _tilde 0
 ############# end config ##############
 
 # GitHub Desktop Linux
-deb-all https://packagecloud.io/shiftkey/desktop/any/ any main
-deb-amd64 https://packagecloud.io/shiftkey/desktop/any/ any main
-clean https://packagecloud.io/shiftkey/desktop/
+deb-all https://apt.packages.shiftkey.dev/ubuntu any main
+deb-amd64 https://apt.packages.shiftkey.dev/ubuntu any main
+clean https://apt.packages.shiftkey.dev/ubuntu
 
 # Zotero
 deb-all https://zotero.retorque.re/file/apt-package-archive ./

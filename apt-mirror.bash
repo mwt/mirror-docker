@@ -34,7 +34,7 @@ wget -qNP "$mirror_path/zotero.retorque.re/file/apt-package-archive" "https://zo
 ####################
 
 find "$mirror_path" -type f -regex '.*Release\|.*Packages\.?[^/]*' -mmin -360 -print | sed \
- -e "s|^${mirror_path}/packagecloud.io/shiftkey/desktop/any|ghd/deb|" \
+ -e "s|^${mirror_path}/apt.packages.shiftkey.dev/ubuntu|ghd/deb|" \
  -e "s|^${mirror_path}/zotero.retorque.re/file/apt-package-archive|zotero/deb|" | 
 while mapfile -t -n 30 ary && ((${#ary[@]}))
 do
