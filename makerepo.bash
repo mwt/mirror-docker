@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 SCRIPT_DIR="$(dirname "$0")"
 desination_path="/mnt/mirror/repos"
 
