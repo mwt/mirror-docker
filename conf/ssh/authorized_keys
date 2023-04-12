@@ -1,2 +1,2 @@
-command="rsync --config=/home/mirror/git/mirror-scripts/conf/rsync.conf --server --daemon .",no-agent-forwarding,no-port-forwarding,no-pty,no-user-rc,no-X11-forwarding ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9KgC7SO05muUnGP8oLtpfW3t/mbi9gF/C33AhbtF0P
+command="rsync --config=/home/mirror/scripts/conf/rsync.conf --server --daemon .",no-agent-forwarding,no-port-forwarding,no-pty,no-user-rc,no-X11-forwarding ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9KgC7SO05muUnGP8oLtpfW3t/mbi9gF/C33AhbtF0P
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDUSCkQeY1mSfUtoHkZ8yw7m5oq8OiJY+jxO8x60+MIz mirror@mirror-ny-p

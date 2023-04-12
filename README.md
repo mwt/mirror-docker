@@ -3,7 +3,7 @@
 ## Cron tasks
 
 ```
-MIRROR_SCRIPTS="/home/mirror/git/mirror-scripts"
+MIRROR_SCRIPTS="/home/mirror/scripts"
 MIRROR_LOGS="/home/mirror/logs"
 # m h  dom mon dow   command
 09 */6      * * *    $MIRROR_SCRIPTS/ctan-mirror.bash >> $MIRROR_LOGS/ctan.log
