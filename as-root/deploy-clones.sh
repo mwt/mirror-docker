@@ -2,12 +2,11 @@
 
 SERVERS=("second" "mirror-lu-p" "mirror-lu-s")
 
-for SERVER in "${SERVERS[@]}"
-do
+for SERVER in "${SERVERS[@]}"; do
     ssh -Nf "${SERVER}"
-    rsync -avxHAX --delete "/srv/www/"    "${SERVER}:/srv/www"
-    rsync -avxHAX --delete "/etc/nginx/"  "${SERVER}:/etc/nginx"
-    rsync -avxHAX --delete "/etc/letsencrypt/"  "${SERVER}:/etc/letsencrypt"
+    rsync -avxHAX --delete "/srv/www/" "${SERVER}:/srv/www"
+    rsync -avxHAX --delete "/etc/nginx/" "${SERVER}:/etc/nginx"
+    rsync -avxHAX --delete "/etc/letsencrypt/" "${SERVER}:/etc/letsencrypt"
 
     # sync mirror folder (which contains fancyindex theme)
     rsync -avxHAX --exclude '.ssh/known_hosts' --delete "/home/mirror/" "${SERVER}:/home/mirror"
