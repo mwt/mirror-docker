@@ -2,7 +2,7 @@
 <!--#set var="repo_base_url" value="https://$host/$inc_foldername" -->
 APP_NAME="<!--# echo var='inc_foldername' -->"
 BASE_URL="<!--# echo var='repo_base_url' -->"
-GPG_KEY="<!--# include file="./gpgkey" -->"
+GPG_KEY="<!--# include file='./gpgkey' -->"
 
 DEB_REPO="$BASE_URL/deb any main"
 RPM_REPO="[$APP_NAME]
