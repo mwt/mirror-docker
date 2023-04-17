@@ -1,7 +1,5 @@
-#!/bin/sh
 # This script installs an repository for apt, dnf, yum, or zypper. It expects
 # the following eniroment variables.
-# GPG_KEY_URL : the url for the asc gpg key
 # GPG_KEY     : the gpg key itself
 # APP_NAME    : the name to use for the repo file and key
 # DEB_REPO    : (optional) the string to appear in the .list file
