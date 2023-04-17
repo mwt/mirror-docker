@@ -1,10 +1,11 @@
 #!/bin/sh
 # This script installs an repository for apt, dnf, yum, or zypper. It expects
 # the following eniroment variables.
-# GPG_KEY  : the url for the asc gpg key
-# APP_NAME : the name to use for the repo file and key
-# DEB_REPO : (optional) the string to appear in the .list file
-# RPM_REPO : (optional) the string to appear in the .repo file
+# GPG_KEY_URL : the url for the asc gpg key
+# GPG_KEY     : the gpg key itself
+# APP_NAME    : the name to use for the repo file and key
+# DEB_REPO    : (optional) the string to appear in the .list file
+# RPM_REPO    : (optional) the string to appear in the .repo file
 
 # Override repostiroy based on distribution identity
 test -e /etc/os-release && os_release='/etc/os-release' || os_release='/usr/lib/os-release'
@@ -112,22 +113,17 @@ if [ "$PACKAGE_MANAGER" = "apt" ]; then
     # Make sure the keyring directory exists
     mkdir -p "$GPG_KEY_DIR"
 
-    if command -v wget >/dev/null; then
-        echo "Wget detected. Using Wget."
-        wget -qO "$GPG_KEY_PATH" "$GPG_KEY"
-    elif command -v curl >/dev/null; then
-        echo "cURL detected. Using cURL."
-        curl -s "$GPG_KEY" -o "$GPG_KEY_PATH"
-    else
-        echo "FAILED: Neither Wget nor cURL available."
-        exit 1
-    fi
+    # Export key to file
+    echo "$GPG_KEY" >"$GPG_KEY_PATH"
     # get arch
     DEBIAN_ARCH=$(dpkg --print-architecture)
     echo "deb [arch=$DEBIAN_ARCH signed-by=$GPG_KEY_PATH by-hash=force] $DEB_REPO" >"$APTLIST_PATH"
     echo "DONE!"
     exit
 else
+    GPG_KEY_DIR="/etc/pki/rpm-gpg"
+    GPG_KEY_PATH="$GPG_KEY_DIR/$APP_NAME.asc"
+
     # set the path for the repo file depending on the package manager
     case "$PACKAGE_MANAGER" in
     "yum")
@@ -138,8 +134,14 @@ else
         ;;
     esac
 
-    rpm --import "$GPG_KEY"
-    echo "$RPM_REPO" >$RPMLIST_PATH
+    # Make sure the keyring directory exists
+    mkdir -p "$GPG_KEY_DIR"
+
+    # Export key to file
+    echo "$GPG_KEY" >"$GPG_KEY_PATH"
+
+    rpm --import "$GPG_KEY_PATH"
+    echo "$RPM_REPO" >"$RPMLIST_PATH"
     echo "DONE!"
 
     # Give a helpful note if we assumed yum despite zypper being installed
